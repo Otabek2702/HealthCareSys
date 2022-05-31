@@ -28,7 +28,6 @@ class Doctor(models.Model):
 
 
 class Patient(models.Model):
-    id = models.
     gender = [('M', 'Male'), ('F', 'Female')]
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
