@@ -50,7 +50,7 @@
   </div>
   <nav class="navbar navbar-expand-lg navigation" id="navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="{% url '' %}">
         <img src="{% static 'images/logo.png' %}" alt="" class="img-fluid">
       </a>
 
@@ -98,10 +98,57 @@
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
+      <div>
+        <button class="loginButton">Login</button>
+        <style>
+            .loginButton {
+                background-color: #FFFFFF;
+                border: 1px solid #222222;
+                border-radius: 8px;
+                box-sizing: border-box;
+                color: #222222;
+                cursor: pointer;
+                display: inline-block;
+                font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 20px;
+                margin: 0;
+                outline: none;
+                padding: 13px 23px;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                touch-action: manipulation;
+                transition: box-shadow .2s, -ms-transform .1s, -webkit-transform .1s, transform .1s;
+                user-select: none;
+                -webkit-user-select: none;
+                width: auto;
+            }
+
+            .loginButton:focus-visible {
+                box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+                transition: box-shadow .2s;
+            }
+
+            .loginButton:active {
+                background-color: #F7F7F7;
+                border-color: #000000;
+                transform: scale(.96);
+            }
+
+            .loginButton:disabled {
+                border-color: #DDDDDD;
+                color: #DDDDDD;
+                cursor: not-allowed;
+                opacity: 1;
+            }
+
+        </style>
+      </div>
     </div>
   </nav>
 </header>
-
 
 <!-- Slider Start -->
 <section class="banner">
@@ -339,19 +386,14 @@
           <h2 class="mb-2 title-color">Book appoinment</h2>
           <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste
             dolorum atque similique praesentium soluta.</p>
-          <form id="#" class="appoinment-form" method="post" action="#">
+          <form id="#" class="appoinment-form" method="post" action="">
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
                   <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Choose Department</option>
-                    <option>Software Design</option>
-                    <option>Development cycle</option>
-                    <option>Software Development</option>
-                    <option>Maintenance</option>
-                    <option>Process Query</option>
-                    <option>Cost and Duration</option>
-                    <option>Modal Delivery</option>
+                    {% for item in department %}
+                      <option>{{ item.title }}</option>
+                    {% endfor %}
                   </select>
                 </div>
               </div>
@@ -359,13 +401,15 @@
                 <div class="form-group">
                   <select class="form-control" id="exampleFormControlSelect2">
                     <option>Select Doctors</option>
+                    {% if department.id %}
+
+                    {% endif %}
                     <option>Software Design</option>
                     <option>Development cycle</option>
                     <option>Software Development</option>
                     <option>Maintenance</option>
                     <option>Process Query</option>
                     <option>Cost and Duration</option>
-                    <option>Modal Delivery</option>
                   </select>
                 </div>
               </div>
