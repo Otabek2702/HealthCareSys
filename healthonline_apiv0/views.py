@@ -1,7 +1,8 @@
-import json
 
 from django.shortcuts import render
 from rest_framework import viewsets, generics
+from rest_framework.permissions import IsAuthenticated
+
 from HealthOnline.models import *
 from .serializer import *
 from HealthOnline.models import *
@@ -13,6 +14,7 @@ from HealthOnline.models import *
 class PatientViewSet(viewsets.ModelViewSet):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         def get_queryset(self):
@@ -27,11 +29,13 @@ class PatientViewSet(viewsets.ModelViewSet):
 class DoctortViewSet(viewsets.ModelViewSet):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
+    permission_classes = (IsAuthenticated,)
 
 
 class PatientCreateView(generics.CreateAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
         print(request.POST)
@@ -41,6 +45,7 @@ class PatientCreateView(generics.CreateAPIView):
 class PatientUpdateView(generics.UpdateAPIView):
     serializer_class = PatientSerializer
     queryset = Patient.objects.all()
+    permission_classes = (IsAuthenticated,)
 
     # lookup_field = 'id'
 
@@ -54,6 +59,7 @@ class PatientUpdateView(generics.UpdateAPIView):
 class PatientDeleteView(generics.DestroyAPIView):
     serializer_class = PatientSerializer
     queryset = Patient.objects.all()
+    permission_classes = (IsAuthenticated,)
 
     def get_object(self):
         return Patient.objects.get(pk=self.request.data.get('id'))

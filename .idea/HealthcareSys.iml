@@ -17,8 +17,9 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/med" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.10 (venvHealth)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.10 (HealthCareSys)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="boxicons" level="application" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
@@ -36,8 +37,8 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/static" />
         <option value="$MODULE_DIR$/templates" />
+        <option value="$MODULE_DIR$/static" />
       </list>
     </option>
   </component>
