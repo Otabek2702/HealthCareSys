@@ -23,10 +23,65 @@ class IndexView(View):
         print(request.POST)
 
 
+class AboutView(View):
+    def get(self, request):
+        return render(request, 'onlineView/about.html')
+
+
+class AppointmentView(View):
+    def get(self, request):
+        return render(request, 'onlineView/appoinment.html')
+
+
+class BlogSidebarView(View):
+    def get(self, request):
+        return render(request, 'onlineView/blog-sidebar.html')
+
+
+class BlogSingleView(View):
+    def get(self, request):
+        return render(request, 'onlineView/blog-single.html')
+
+
+class ConfirmationView(View):
+    def get(self, request):
+        return render(request, 'onlineView/confirmation.html')
+
+
+class ContactView(View):
+    def get(self, request):
+        return render(request, 'onlineView/contact.html')
+
+
+class DepartmentView(View):
+    def get(self, request):
+        return render(request, 'onlineView/department.html')
+
+
+class DepartmentSingleView(View):
+    def get(self, request):
+        return render(request, 'onlineView/department-single.html')
+
+
+class DoctorView(View):
+    def get(self, request):
+        return render(request, 'onlineView/doctor.html')
+
+
+class DoctorSingleView(View):
+    def get(self, request):
+        return render(request, 'onlineView/doctor-single.html')
+
+
+class ServiceView(View):
+    def get(self, request):
+        return render(request, 'onlineView/service.html')
+
+
 def login_user(request):
     print(request.method)
     if request.method == "POST":
-        print(request.method)
+        print(request.POST)
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)

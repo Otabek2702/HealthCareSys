@@ -8,8 +8,8 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
-    path('patients/', PatientViewSet.as_view({'get': 'list'}), name='patient'),
-    path('doctors/', DoctortViewSet.as_view({'get': 'list'}), name='doctor'),
+    path('patients/', PatientViewSet.as_view({'get': 'list'}), name='apipatient'),
+    path('doctors/', DoctortViewSet.as_view({'get': 'list'}), name='apidoctor'),
     path('patients/create', PatientCreateView.as_view(), name='createpatient'),
     path('patients/update', PatientUpdateView.as_view(), name='updatepatient'),
     path('patients/delete', PatientDeleteView.as_view(), name='deletepatient'),
