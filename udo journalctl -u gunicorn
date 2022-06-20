@@ -1,0 +1,22 @@
+[0;1;32m●[0m gunicorn.service - gunicorn daemon
+     Loaded: loaded (/etc/systemd/system/gunicorn.service; disabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Mon 2022-06-20 16:26:48 UTC; 9s ago
+TriggeredBy: [0;1;32m●[0m gunicorn.socket
+   Main PID: 4740 (gunicorn)
+      Tasks: 4 (limit: 1145)
+     Memory: 104.2M
+     CGroup: /system.slice/gunicorn.service
+             ├─4740 /home/ubuntu/HealthCareSys/venv1/bin/python /home/ubuntu/HealthCareSys/venv1/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock HealthcareSys.wsgi:application
+             ├─4742 /home/ubuntu/HealthCareSys/venv1/bin/python /home/ubuntu/HealthCareSys/venv1/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock HealthcareSys.wsgi:application
+             ├─4743 /home/ubuntu/HealthCareSys/venv1/bin/python /home/ubuntu/HealthCareSys/venv1/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock HealthcareSys.wsgi:application
+             └─4744 /home/ubuntu/HealthCareSys/venv1/bin/python /home/ubuntu/HealthCareSys/venv1/bin/gunicorn --access-logfile - --workers 3 --bind unix:/run/gunicorn.sock HealthcareSys.wsgi:application
+
+Jun 20 16:26:48 ip-172-31-91-82 systemd[1]: Started gunicorn daemon.
+Jun 20 16:26:48 ip-172-31-91-82 gunicorn[4740]: [2022-06-20 16:26:48 +0000] [4740] [INFO] Starting gunicorn 20.1.0
+Jun 20 16:26:48 ip-172-31-91-82 gunicorn[4740]: [2022-06-20 16:26:48 +0000] [4740] [INFO] Listening at: unix:/run/gunicorn.sock (4740)
+Jun 20 16:26:48 ip-172-31-91-82 gunicorn[4740]: [2022-06-20 16:26:48 +0000] [4740] [INFO] Using worker: sync
+Jun 20 16:26:48 ip-172-31-91-82 gunicorn[4742]: [2022-06-20 16:26:48 +0000] [4742] [INFO] Booting worker with pid: 4742
+Jun 20 16:26:48 ip-172-31-91-82 gunicorn[4743]: [2022-06-20 16:26:48 +0000] [4743] [INFO] Booting worker with pid: 4743
+Jun 20 16:26:48 ip-172-31-91-82 gunicorn[4744]: [2022-06-20 16:26:48 +0000] [4744] [INFO] Booting worker with pid: 4744
+Jun 20 16:26:49 ip-172-31-91-82 gunicorn[4742]: <QueryDict: {}>
+Jun 20 16:26:49 ip-172-31-91-82 gunicorn[4742]:  - - [20/Jun/2022:16:26:49 +0000] "GET / HTTP/1.1" 200 28261 "-" "curl/7.68.0"

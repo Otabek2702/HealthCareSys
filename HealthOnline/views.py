@@ -81,18 +81,23 @@ class ServiceView(View):
 def login_user(request):
     print(request.method)
     if request.method == "POST":
-        print(request.POST)
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('profile')
-        else:
-            messages.success(request, "Bunday foydalanauvchi topilmadi. Qaytadan urinib ko'ring!")
-            return redirect('login')
+        if 'username' in request.POST:
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('profile')
+            else:
+                messages.success(request, "Bunday foydalanauvchi topilmadi. Qaytadan urinib ko'ring!")
+                return redirect('login')
+        elif 'newusername' in request.POST:
+            pass 
     else:
         return render(request, 'onlineView/signup_login.html')
+
+
+class RegisterUser():
 
 
 class ProfileView(LoginRequiredMixin, DetailView):
