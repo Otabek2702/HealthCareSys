@@ -1,13 +1,43 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <!-- login style -->
-    <link rel="stylesheet" href="">
+  <meta charset="UTF-8">
+  <title>Login/Signup</title>
+  <!-- login style -->
+  <link rel="stylesheet" href="{% static 'Health/login.css' %}">
 </head>
 <body>
+<div class="container right-panel-active">
 
+  <div class="container__form container--signin">
+    <!-- Sign Up -->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+    <form action="" class="form" method="post">{% csrf_token %}
+      <h2 class="form__title">Sign Up</h2>
+      <input type="text" placeholder="Username" class="input" name="username"/>
+      <input type="email" placeholder="Email" class="input" name="email"/>
+      <input type="password" placeholder="Password" class="input" name="password"/>
+      <input type="password" placeholder="Confirm Password" class="input" name="password2">
+      <button class="btn">Sign Up</button>
+    </form>
+
+  </div>
+
+  <!-- Overlay -->
+  <div class="container__overlay">
+    <div class="overlay">
+      <div class="overlay__panel overlay--left">
+        <a class="btn" id="signIn" href="{% url 'login' %}">Sign In</a>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
+</html>

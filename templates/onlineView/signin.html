@@ -10,24 +10,6 @@
 </head>
 <body>
 <div class="container right-panel-active">
-  <!-- Sign Up -->
-  <div class="container__form container--signup">
-    {% if messages %}
-      {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          {{ message }}
-        </div>
-      {% endfor %}
-    {% endif %}
-    <form action="" class="form" method="post">{% csrf_token %}
-      <h2 class="form__title">Sign Up</h2>
-      <input type="text" placeholder="Username" class="input" name="newusername"/>
-      <input type="email" placeholder="Email" class="input" name="newemail"/>
-      <input type="password" placeholder="Password" class="input" name="newpassword"/>
-      <button class="btn">Sign Up</button>
-    </form>
-  </div>
-
   <!-- Sign In -->
   <div class="container__form container--signin">
     {% if messages %}
@@ -50,7 +32,7 @@
   <div class="container__overlay">
     <div class="overlay">
       <div class="overlay__panel overlay--left">
-        <button class="btn" id="signIn">Sign In</button>
+        <a class="btn" id="signIn" href="{% url 'register' %}">Sign Up</a>
       </div>
       <div class="overlay__panel overlay--right">
         <button class="btn" id="signUp">Sign Up</button>
@@ -59,6 +41,6 @@
   </div>
 </div>
 <!-- script -->
-<script src="{% static 'Health/login.js' %}"></script>
+{#<script src="{% static 'Health/login.js' %}"></script>#}
 </body>
 </html>

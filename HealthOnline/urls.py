@@ -15,5 +15,6 @@ urlpatterns = [
     path('doctor-single/', views.DoctorSingleView.as_view(), name='doctor-single'),
     path('service/', views.ServiceView.as_view(), name='service'),
     path('login/', views.login_user, name='login'),
+    path('register/', views.register, name='register'),
     path('profile/', views.ProfileView.as_view(), name='profile'),
 ]

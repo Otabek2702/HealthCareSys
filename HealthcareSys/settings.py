@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-from distutils.debug import DEBUG
 import os
 from datetime import timedelta
 from pathlib import Path
@@ -26,15 +25,14 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 environ.Env.read_env(BASE_DIR / '.env')
+SECRET_KEY = env("SECRET_KEY")
+DEBUG = env('DEBUG')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = env("SECRET_KEY")
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['44.202.113.219', '84.54.84.150', 'localhost']
+ALLOWED_HOSTS = ['44.202.113.219', '84.54.84.150', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -182,12 +180,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / 'static'
+# STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static"
-# ]
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import DetailView, CreateView
-from django.contrib.auth import authenticate, login, logout
+from django.views.generic import DetailView
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .models import User, Room, Patient, Visits, Payment, PaymentType, Doctor, Appointment, Department, Specialization
+from .models import Room, Patient, Visits, Payment, PaymentType, Doctor, Appointment, Department, Specialization
 
 
 # Create your views here.
@@ -95,13 +94,21 @@ def login_user(request):
         elif 'newusername' in request.POST:
             pass 
     else:
-        return render(request, 'onlineView/signup_login.html')
+        return render(request, 'onlineView/signin.html')
 
 
-class RegisterUser(DataMixin, CreateView):
-    form_class = UserCreationForm
-    template_name = 'onlineView/register.html'
-    success_url = reverse_lazy('login')
+def register(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        email = request.POST['email']
+        password1 = request.POST['password']
+        password2 = request.POST['password2']
+
+        myuser = User.objects.create_user(username, email, password1)
+        myuser.is_active = False
+        myuser.save()
+
+    return render(request, 'onlineView/register.html')
 
 
 class ProfileView(LoginRequiredMixin, DetailView):
