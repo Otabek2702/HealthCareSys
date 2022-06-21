@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import DetailView
+from django.views.generic import DetailView, CreateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -97,7 +98,10 @@ def login_user(request):
         return render(request, 'onlineView/signup_login.html')
 
 
-class RegisterUser():
+class RegisterUser(DataMixin, CreateView):
+    form_class = UserCreationForm
+    template_name = 'onlineView/register.html'
+    success_url = reverse_lazy('login')
 
 
 class ProfileView(LoginRequiredMixin, DetailView):
