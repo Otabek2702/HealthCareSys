@@ -1,13 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import View
 from django.views.generic import DetailView
-from django.contrib.auth import authenticate, login
 # from django.contrib.auth.decorators import
-from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib import messages
 
-from .models import Room, Patient, Visits, Payment, PaymentType, Doctor, Appointment, Department, Specialization
+from . import models
 
 
 # Create your views here.
@@ -15,8 +12,8 @@ from .models import Room, Patient, Visits, Payment, PaymentType, Doctor, Appoint
 
 class IndexView(View):
 
-    def get(self, request):
-        context = {'department': Department.objects.all()}
+    def get(self, request, *args, **kwargs):
+        context = {'department': models.Department.objects.all()}
         print(request.GET)
         return render(request, "onlineView/index.html", context=context)
 
@@ -79,43 +76,11 @@ class ServiceView(View):
         return render(request, 'onlineView/service.html')
 
 
-def login_user(request):
-    if request.user.is_authenticated:
-        print(request.user)
-        return redirect('profile')
-    print(request.method)
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('profile')
-        else:
-            messages.success(request, "Bunday foydalanauvchi topilmadi. Qaytadan urinib ko'ring!")
-            return redirect('login')
-    else:
-        return render(request, 'onlineView/signin.html')
-
-
-def register(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        email = request.POST['email']
-        password1 = request.POST['password']
-
-        myuser = User.objects.create_user(username, email, password1)
-        myuser.is_active = False
-        myuser.save()
-        return redirect('login')
-
-    return render(request, 'onlineView/register.html')
-
-
 class ProfileView(LoginRequiredMixin, DetailView):
-    model = Patient
+    model = models.Patient
     context_object_name = 'patient'
-    login_url = '/login/'
+    login_url = '/auth/login/'
+    template_name = 'Profile/profile.html'
 
     def get_context_data(self, **kwargs):
         context = {}

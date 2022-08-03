@@ -18,11 +18,10 @@ from django.urls import path, include
 from django.conf.urls.static import static, settings
 
 urlpatterns = [
-    path('', include('HealthOnline.urls')),
-    path('', include('django.contrib.auth.urls')),
-    path('apiv0/', include('healthonline_apiv0.urls')),
-    path('admin/', admin.site.urls),
+                  path('', include('HealthOnline.urls')),
+                  path('auth/', include('authentication.urls')),
+                  path('apiv0/', include('healthonline_apiv0.urls')),
+                  path('admin/', admin.site.urls),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + \
-static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + \
+              static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

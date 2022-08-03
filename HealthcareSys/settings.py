@@ -32,7 +32,18 @@ DEBUG = env('DEBUG')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['44.202.113.219', '84.54.84.150', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+# Email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_ID')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PW')
+
+DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
 
 # Application definition
 
@@ -49,6 +60,7 @@ INSTALLED_APPS = [
 
     # apps
     'HealthOnline',
+    'authentication',
 
     # api
     'healthonline_apiv0',
@@ -99,9 +111,9 @@ WSGI_APPLICATION = 'HealthcareSys.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'healthcaresys',
-        'USER': 'admindjango',
-        'PASSWORD': 'admin',
+        'NAME': '****',
+        'USER': '****',
+        'PASSWORD': '****',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -194,3 +206,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'authentication.CustomUser'

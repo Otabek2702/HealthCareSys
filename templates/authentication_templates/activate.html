@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Activate</title>
+</head>
+<body>
+{% autoescape off %}
+  Hi {{ user.username }}
+
+  Please use the link below to verify your account.
+
+  http://{{ domian }}{% url 'activate'  uid64=iud token=token %}
+
+{% endautoescape %}
+
+</body>
+</html>

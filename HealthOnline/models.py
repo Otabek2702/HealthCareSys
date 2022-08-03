@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models
 
@@ -32,7 +33,7 @@ class Doctor(models.Model):
         ('F', 'Female')
     ]
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     first_name = models.CharField(max_length=50, default='')
     last_name = models.CharField(max_length=50)
     birth_date = models.DateField()
@@ -40,7 +41,8 @@ class Doctor(models.Model):
     specialization = models.ForeignKey(Specialization, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=15)
-    image = models.ImageField(upload_to='DoctorImage', null=True)
+    image = models.ImageField(upload_to='DoctorImage', null=True, default='', blank=True)
+    is_email_verified = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -52,14 +54,15 @@ class Patient(models.Model):
         ('F', 'Female')
     ]
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     birth_date = models.DateField()
     gender = models.CharField(choices=GENDER, max_length=1)
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15)
-    image = models.ImageField(upload_to='PatientImage', null=True)
+    image = models.ImageField(upload_to='PatientImage', null=True, blank=True, default='')
+    is_email_verified = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
