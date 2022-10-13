@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="45ea9c50-056c-49a4-84f4-07be2453938d" name="ubuntu">
+        <fileTransfer rootFolder="/home/ubuntu" accessType="SFTP" host="ec2-54-238-198-113.ap-northeast-1.compute.amazonaws.com" port="22" sshConfigId="fbfd1327-c44b-4aaf-a133-2c1b20abe317" sshConfig="ubuntu@ec2-54-238-198-113.ap-northeast-1.compute.amazonaws.com:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

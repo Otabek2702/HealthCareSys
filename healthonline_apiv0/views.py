@@ -1,5 +1,3 @@
-
-from django.shortcuts import render
 from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated
 
@@ -16,14 +14,17 @@ class PatientViewSet(viewsets.ModelViewSet):
     serializer_class = PatientSerializer
     permission_classes = (IsAuthenticated,)
 
-    def get(self, request):
-        def get_queryset(self):
-            q = Patient.objects.all()
-            url_dict = self.request.GET
-            if 'patient_name' in url_dict['patient_name']:
-                q = q.filter(first_name__icontains=url_dict.get('patient_name'))
-                print(q)
-            return q
+    # def get(self, request):
+    #     print('asda')
+    #
+    #     def get_queryset(self):
+    #         q = Patient.objects.all()
+    #         url_dict = self.request.GET
+    #         print(url_dict)
+    #         if 'patient_name' in url_dict['patient_name']:
+    #             q = q.filter(first_name__icontains=url_dict.get('patient_name'))
+    #             print(q)
+    #         return q
 
 
 class DoctortViewSet(viewsets.ModelViewSet):

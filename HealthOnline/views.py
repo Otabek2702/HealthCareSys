@@ -5,6 +5,7 @@ from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import models
+from authentication.models import CustomUser
 
 
 # Create your views here.
@@ -77,17 +78,11 @@ class ServiceView(View):
 
 
 class ProfileView(LoginRequiredMixin, DetailView):
-    model = models.Patient
+    model = CustomUser
     context_object_name = 'patient'
     login_url = '/auth/login/'
     template_name = 'Profile/profile.html'
 
-    def get_context_data(self, **kwargs):
-        context = {}
-        return context
-
     def get(self, request, *args, **kwargs):
         return render(request, 'Profile/profile.html')
 
-    def post(self, request):
-        pass

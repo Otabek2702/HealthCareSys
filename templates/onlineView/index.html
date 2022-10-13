@@ -9,7 +9,7 @@
   <title>Novena- Health & Care Medical template</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href=""/>
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}"/>
 
   <!-- bootstrap.min css -->
   <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
@@ -82,7 +82,7 @@
             <ul class="dropdown-menu" aria-labelledby="dropdown03">
               <li><a class="dropdown-item" href="{% url 'doctor' %}">Doctors</a></li>
               <li><a class="dropdown-item" href="{% url 'doctor-single' %}">Doctor Single</a></li>
-              <li><a class="dropdown-item" href="{% url 'appoinmen' %}">Appoinment</a></li>
+              <li><a class="dropdown-item" href="{% url 'appoinment' %}">Appoinment</a></li>
             </ul>
           </li>
 
@@ -163,7 +163,7 @@
           <p class="mb-4 pr-5">A repudiandae ipsam labore ipsa voluptatum quidem quae laudantium quisquam aperiam
             maiores sunt fugit, deserunt rem suscipit placeat.</p>
           <div class="btn-container ">
-            <a href="{% url 'appoinmen' %}" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Make appoinment <i
+            <a href="{% url 'appoinment' %}" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Make appoinment <i
                     class="icofont-simple-right ml-2  "></i></a>
           </div>
         </div>
@@ -183,7 +183,7 @@
             <span>24 Hours Service</span>
             <h4 class="mb-3">Online Appoinment</h4>
             <p class="mb-4">Get ALl time support for emergency.We have introduced the principle of family medicine.</p>
-            <a href="{% url 'appoinmen' %}" class="btn btn-main btn-round-full">Make a appoinment</a>
+            <a href="{% url 'appoinment' %}" class="btn btn-main btn-round-full">Make a appoinment</a>
           </div>
 
           <div class="feature-item mb-5 mb-lg-0">
@@ -235,7 +235,7 @@
           <p class="mt-4 mb-5">We provide best leading medicle service Nulla perferendis veniam deleniti ipsum officia
             dolores repellat laudantium obcaecati neque.</p>
 
-          <a href="service.html" class="btn btn-main-2 btn-round-full btn-icon">Services<i
+          <a href="{% url 'service' %}" class="btn btn-main-2 btn-round-full btn-icon">Services<i
                   class="icofont-simple-right ml-3"></i></a>
         </div>
       </div>
@@ -441,7 +441,7 @@
               <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
             </div>
 
-            <a class="btn btn-main btn-round-full" href="{% url 'appoinmen' %}">Make Appoinment <i
+            <a class="btn btn-main btn-round-full" href="{% url 'appoinment' %}">Make Appoinment <i
                     class="icofont-simple-right ml-2  "></i></a>
           </form>
         </div>
